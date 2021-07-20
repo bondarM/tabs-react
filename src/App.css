@@ -19,7 +19,9 @@ line-height: 140%;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
   overflow-y: scroll;
-  /* scrollbar-width: none; */
+  scrollbar-width: thin;
+  scrollbar-height: none;
+  scrollbar-color: rgb(156, 156, 156) rgb(199, 199, 199);
 }
 .container{
   position: relative;
