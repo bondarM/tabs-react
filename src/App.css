@@ -1,0 +1,84 @@
+body{
+  background-color:#F2F2F2;
+  margin: 0;
+  padding: 0;
+}
+
+div{
+font-family: 'Lato', sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 140%;
+}
+
+.tab__container{
+  display: flex;
+  padding: 8px 0;
+  margin-top: 50px;
+  border-top: 1px solid #cfcfcf;
+  border-bottom: 1px solid #cfcfcf;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.container{
+  position: relative;
+}
+.tab__container::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+
+.tab{
+  white-space: nowrap;
+  padding :8px 24px;
+  cursor: pointer;
+  border-radius: 2px;
+  
+}
+
+.tab:last-child{
+  margin-right: 24px;
+}
+
+.tab:hover{
+  background: #E0E0E0;
+}
+
+.tab.active{
+  background-color: #CFE5FF; 
+  color: #527AAA;
+}
+
+.tab.disable{
+  color:  #AFAFAF;
+  cursor:not-allowed;
+  background-color: #F2F2F2;
+  
+}
+
+.right__shadow, .left__shadow{
+  position: absolute;
+  width: 40px;
+  top:1px;
+  height: calc(100% - 2px);
+  opacity: 0.5;
+  mix-blend-mode: darken;
+  Pointer-events: none;
+}
+
+.right__shadow{
+  right: 0;
+  background: linear-gradient(to right, #f2f2f2, #b3b3b3);
+}
+
+.left__shadow{
+  background: linear-gradient(to left, #f2f2f2, #b3b3b3);
+  left: 0;
+  display: none;
+}
+
+
+.show{
+  display: block;
+}
