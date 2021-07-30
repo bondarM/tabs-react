@@ -94,3 +94,12 @@ line-height: 140%;
 .show{
   display: block;
 }
+
+
+.hide__shadow{
+display: none;
+}
+
+.show__shadow{
+display: block;
+}

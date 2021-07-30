@@ -3,7 +3,8 @@ import React, { useRef, useState } from 'react'
 export const Tabs = () => {
 
     const [activeList, setActiveList] = useState(3);
-
+    const [leftStyle, setLeftStyle] = useState("hide__shadow");
+    const [rightStyle, setRightStyle] = useState("show__shadow");
 
     const cotainer = useRef();
     const leftShadow = useRef();
@@ -30,28 +31,22 @@ export const Tabs = () => {
         cotainer.current.scrollLeft += (e.deltaY / 4);
 
         if (cotainer.current.scrollLeft > 0) {
-            leftShadow.current.style.display = "block"
+            setLeftStyle("show__shadow")
         }
         else {
-            leftShadow.current.style.display = "none"
+            setLeftStyle("hide__shadow")
         }
-        if (cotainer.current.scrollLeft > 970) {
-            rightShadow.current.style.display = "none"
+        if (cotainer.current.scrollLeft == cotainer.current.scrollWidth - cotainer.current.offsetWidth) {
+            setRightStyle("hide__shadow")
         } else {
-            rightShadow.current.style.display = "block"
+            setRightStyle("show__shadow")
         }
     }
 
     const addActive = (e, key) => {
-        if (!e.target.dataset.disable) {
             activeList === key ? setActiveList(-1) : setActiveList(key);
             e.target.scrollIntoView({ block: "center", behavior: "smooth" });
-        }
     }
-
-
-
-
 
 
     return (
@@ -59,11 +54,11 @@ export const Tabs = () => {
             <div ref={cotainer} onWheel={wheelScroll} className="tab__container">
                 {tabs.map((tab, key) => {
                     return <div key={key} data-disable={tab.disable}
-                        onClick={(e) => addActive(e, key)}
+                        onClick={(e) => !tab.disable ? addActive(e, key) : ""}
                         className={`tab ${activeList === key ? "active" : ""} ${tab.disable ? "disable" : ""}`}>{tab.name}</div>
                 })}
-                <div ref={rightShadow} className="right__shadow"></div>
-                <div ref={leftShadow} className="left__shadow"></div>
+                <div ref={rightShadow} className={`right__shadow ${rightStyle}`}></div>
+                <div ref={leftShadow} className={`left__shadow ${leftStyle}`}></div>
             </div>
         </div>
     )
